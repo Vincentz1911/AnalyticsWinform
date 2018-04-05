@@ -73,6 +73,8 @@
             this.button10 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.RefreshAccounts_btn = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -390,6 +392,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button12);
+            this.groupBox1.Controls.Add(this.button9);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.button11);
@@ -425,11 +429,11 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(305, 128);
+            this.button11.Location = new System.Drawing.Point(306, 157);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(75, 23);
             this.button11.TabIndex = 49;
-            this.button11.Text = "Webmaster";
+            this.button11.Text = "Verify";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
@@ -519,6 +523,26 @@
             this.RefreshAccounts_btn.UseVisualStyleBackColor = true;
             this.RefreshAccounts_btn.Click += new System.EventHandler(this.RefreshAccounts_Click);
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(305, 128);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 52;
+            this.button9.Text = "Webmaster";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(305, 186);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 53;
+            this.button12.Text = "Sitemap";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
             // View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -598,5 +622,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button12;
     }
 }

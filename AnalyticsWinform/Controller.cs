@@ -19,6 +19,7 @@ using Google.Apis.AnalyticsReporting.v4;
 using Google.Apis.AnalyticsReporting.v4.Data;
 using Google.Apis.SiteVerification.v1;
 using Google.Apis.SiteVerification.v1.Data;
+using Google.Apis.Requests;
 
 namespace AnalyticsWinform
 {
@@ -34,6 +35,7 @@ namespace AnalyticsWinform
 
         public static string secret = "client_secret.json";
         public static string email = "hpoulsen76@gmail.com";
+        public static string appName = "AnalyticsWinform";
 
         //Get Google Oath 2.0 Credential and Tokens
         async Task<UserCredential> GetCredential()
@@ -50,25 +52,27 @@ namespace AnalyticsWinform
                                 WebmastersService.Scope.Webmasters,
                                 SiteVerificationService.Scope.Siteverification
 
-                    }, email, CancellationToken.None, new FileDataStore("GoogleAnalyticsApiConsole"));
+                    }, email, CancellationToken.None, new FileDataStore(appName));
             }
         }
+
         //Gets analytics accounts connected to the Gmail account and adds them to lists
         public void GetAnalyticsAccounts()
         {
             try
             {
                 var credential = GetCredential().Result;
-                using (var svc2 = new AnalyticsService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = "Google Analytics API Console" }))
+                using (var service = new AnalyticsService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = appName }))
                 {
+                    //var request = new BatchRequest(service);
                     AccountsList.Clear(); PropertyList.Clear(); ViewList.Clear();
-                    foreach (var account in svc2.Management.Accounts.List().Execute().Items)
+                    foreach (var account in service.Management.Accounts.List().Execute().Items)
                     {
                         AccountsList.Add(new Account_cls { ID = int.Parse(account.Id), Name = account.Name });
-                        foreach (var property in svc2.Management.Webproperties.List(account.Id).Execute().Items)
+                        foreach (var property in service.Management.Webproperties.List(account.Id).Execute().Items)
                         {
                             PropertyList.Add(new Property_cls { ID = property.Id, Name = property.Name, Url = property.WebsiteUrl });
-                            foreach (var view in svc2.Management.Profiles.List(account.Id, property.Id).Execute().Items)
+                            foreach (var view in service.Management.Profiles.List(account.Id, property.Id).Execute().Items)
                             {
                                 ViewList.Add(new View_cls { ID = int.Parse(view.Id), Name = view.Name, Url = view.WebsiteUrl });
                             }
@@ -84,17 +88,17 @@ namespace AnalyticsWinform
             try
             {
                 var credential = GetCredential().Result;
-                using (var svc2 = new AnalyticsService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = "Google Analytics API Console" }))
+                using (var service = new AnalyticsService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = appName }))
                 {
                     Webproperty body = new Webproperty();
                     body.WebsiteUrl = url;
-                    body.Name = name;
-                    Webproperty response = svc2.Management.Webproperties.Insert(body, account).Execute();
+                    body.Name = url;
+                    Webproperty response = service.Management.Webproperties.Insert(body, account).Execute();
 
                     Profile profile = new Profile();
                     profile.Name = name;
                     profile.WebsiteUrl = url;
-                    Profile prof_response = svc2.Management.Profiles.Insert(profile, response.AccountId, response.Id).Execute();
+                    Profile prof_response = service.Management.Profiles.Insert(profile, response.AccountId, response.Id).Execute();
 
                     Clipboard.SetText(response.Id);
                     GetAnalyticsAccounts();
@@ -113,7 +117,7 @@ namespace AnalyticsWinform
             {
                 var credential = GetCredential().Result;
 
-                using (var svc = new AnalyticsReportingService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = "Google Analytics API Console" }))
+                using (var service = new AnalyticsReportingService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = appName }))
                 {
                     var dateRange = new DateRange { StartDate = fromDate, EndDate = toDate };
                     var date = new Dimension { Name = "ga:date" };
@@ -135,7 +139,7 @@ namespace AnalyticsWinform
                     {
                         ReportRequests = new List<ReportRequest> { reportRequest }
                     };
-                    var batchRequest = svc.Reports.BatchGet(getReportsRequest);
+                    var batchRequest = service.Reports.BatchGet(getReportsRequest);
                     var response = batchRequest.Execute();
 
                     DataTable table = new DataTable();
@@ -198,6 +202,26 @@ namespace AnalyticsWinform
         }
 
 
+        public void AddWebmasterSite(string siteUrl)
+        {
+            var credential = GetCredential().Result;
+            using (var service = new WebmastersService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = appName }))
+                try
+                {
+                    // Initial validation.
+                    if (service == null)
+                        throw new ArgumentNullException("service");
+                    if (siteUrl == null)
+                        throw new ArgumentNullException(siteUrl);
+
+                    // Make the request.
+                    service.Sites.Add(siteUrl).Execute();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Request Sites.Add failed.", ex);
+                }
+        }
 
         //[STAThread]
         public void RunVerification(string site)
@@ -212,11 +236,9 @@ namespace AnalyticsWinform
             }
 
             // Create the service.
-            var service = new SiteVerificationService(new BaseClientService.Initializer
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = "SiteVerification API Sample",
-            });
+            var service = new SiteVerificationService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = appName });
+
+
 
             // Example of a GetToken call.
             //Console.WriteLine("Retrieving a meta token ...");
@@ -249,6 +271,30 @@ namespace AnalyticsWinform
             var verificationResponse = service.WebResource.Insert(body, "analytics").Execute();
 
             MessageBox.Show("Verification:" + verificationResponse.Id);
+        }
+
+        public void SubmitSitemap(string siteUrl)
+        {
+            string feedpath = "/sitemap.xml";
+            var credential = GetCredential().Result;
+            using (var service = new WebmastersService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = appName }))
+                try
+                {
+                    // Initial validation.
+                    if (service == null)
+                        throw new ArgumentNullException("service");
+                    if (siteUrl == null)
+                        throw new ArgumentNullException(siteUrl);
+                    if (feedpath == null)
+                        throw new ArgumentNullException(feedpath);
+
+                    // Make the request.
+                    service.Sitemaps.Submit(siteUrl, siteUrl + feedpath).Execute();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Request Sitemaps.Submit failed.", ex);
+                }
         }
     }
 

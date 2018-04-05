@@ -100,5 +100,15 @@ namespace AnalyticsWinform
         {
             ctr.RunVerification(PropURLTxt.Text);
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            ctr.AddWebmasterSite(PropURLTxt.Text);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            ctr.SubmitSitemap(PropURLTxt.Text);
+        }
     }
 }
