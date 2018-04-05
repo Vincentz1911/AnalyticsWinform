@@ -106,7 +106,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Get Data";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.GetData_Click);
             // 
             // button2
             // 
@@ -350,7 +350,7 @@
             this.button8.TabIndex = 34;
             this.button8.Text = "Analytics";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.button8.Click += new System.EventHandler(this.NewProperty_Click);
             // 
             // label13
             // 

@@ -20,7 +20,7 @@ namespace AnalyticsWinform
             CalTo.MinDate = new DateTime(2005, 1, 1, 0, 0, 0);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void GetData_Click(object sender, EventArgs e)
         {
             if (CalFrom.SelectionRange.Start > CalTo.SelectionRange.Start)
             { CalFrom.SelectionStart = CalTo.SelectionStart.AddDays(-1); }
@@ -80,7 +80,7 @@ namespace AnalyticsWinform
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK) { Controller.secret = openFileDialog1.FileName; }
         }
-        private void button8_Click(object sender, EventArgs e) { textBox6.Text = ctr.CreateNewProperty(PropNameTxt.Text, PropURLTxt.Text, listBox1.SelectedValue.ToString()); }
+        private void NewProperty_Click(object sender, EventArgs e) { textBox6.Text = ctr.CreateNewProperty(PropNameTxt.Text, PropURLTxt.Text, listBox1.SelectedValue.ToString()); }
         private void textBox5_TextChanged(object sender, EventArgs e) { Controller.email = textBox5.Text; }
 
         private void button2_Click(object sender, EventArgs e) { CalFrom.SelectionStart = CalTo.SelectionStart.AddDays(-1); }
