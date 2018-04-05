@@ -32,7 +32,6 @@ namespace AnalyticsWinform
         public BindingList<Property_cls> PropertyList = new BindingList<Property_cls>();
         public BindingList<View_cls> ViewList = new BindingList<View_cls>();
 
-
         public static string secret = "client_secret.json";
         public static string email = "hpoulsen76@gmail.com";
 
