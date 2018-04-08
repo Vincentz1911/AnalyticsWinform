@@ -1,10 +1,21 @@
-﻿Install-Package Google.Apis.AnalyticsReporting.v4
+﻿Install-Package Microsoft.Net.Http -Version 2.2.29
+--Google Analytics Reporting API
+Install-Package Google.Apis.AnalyticsReporting.v4
+--Analytics API
 Install-Package Google.Apis.Analytics.v3
+--Google Search Console API
 Install-Package Google.Apis.webmasters.v3
+--Site Verification API
 Install-Package Google.Apis.SiteVerification.v1
 
 
 https://stackoverflow.com/questions/36850231/analytics-reporting-api-v4-client-library-for-net
+
+Google Actions
+https://console.actions.google.com/?pli=1
+
+Google API Console
+https://console.cloud.google.com
 
 
 
