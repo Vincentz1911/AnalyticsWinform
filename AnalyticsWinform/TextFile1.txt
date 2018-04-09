@@ -18,15 +18,6 @@ Google API Console
 https://console.cloud.google.com
 
 
-
-Client ID
-43135454259-si9tmelisihetbjfiloprrlofap790q4.apps.googleusercontent.com
-
-Client Secret
-VbaijrW56eTXtwUX0jaXUfPm
-
-
-
 Get Service account instead of Oath2.0:
 
 string[] scopes = new string[] {AnalyticsService.Scope.Analytics}; // view and manage your Google Analytics data
