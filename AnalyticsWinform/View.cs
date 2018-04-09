@@ -43,11 +43,11 @@ namespace AnalyticsWinform
 
             DateTime LastSession = DateTime.Parse(CTR.GetLast(GDT, "Sessions"));
             TimeSpan timeSpanSession = DateTime.Now - LastSession;
-            textBox3.Text = LastSession.ToString("dd/MM/yyyy") + " - " + timeSpanSession.ToString("dd") + " days since";
+            textBox3.Text = LastSession.ToString("dd/MM/yyyy") + " - " + timeSpanSession.ToString("dd") + " days ago";
 
             DateTime LastGoal = DateTime.Parse(CTR.GetLast(GDT, "Goal Completions"));
             TimeSpan timeSpanGoal = DateTime.Now - LastGoal;
-            textBox4.Text = LastGoal.ToString("dd/MM/yyyy") + " - " + timeSpanGoal.ToString("dd") + " days since"; ;
+            textBox4.Text = LastGoal.ToString("dd/MM/yyyy") + " - " + timeSpanGoal.ToString("dd") + " days ago"; ;
 
             //DataRow lastRow = GDT.Rows[GDT.Rows.Count - 1];
 
@@ -106,7 +106,17 @@ namespace AnalyticsWinform
 
         private void button2_Click(object sender, EventArgs e)
         {
-            WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox3.SelectedIndex);
+            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "query");
+            dataGridView2.DataSource = GDT;
+
+            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "page");
+            dataGridView3.DataSource = GDT;
+
+            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "device");
+            dataGridView4.DataSource = GDT;
+
+            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "date");
+            dataGridView5.DataSource = GDT;
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)

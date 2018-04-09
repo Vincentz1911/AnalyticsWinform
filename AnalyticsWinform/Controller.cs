@@ -11,7 +11,7 @@ namespace AnalyticsWinform
     {
         private static readonly HttpClient client = new HttpClient();
 
-        public static string[] OAuth2Files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "/JSON", "*.json");
+        public static string[] OAuth2Files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "JSON", "*.json");
         public Oath2Files_cls Oath_cls { get; set; }
 
         public void GetOAuthFile()

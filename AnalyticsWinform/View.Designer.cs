@@ -60,6 +60,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.PropURLTxt = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button14 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -83,23 +84,41 @@
             this.RefreshAccounts_btn = new System.Windows.Forms.Button();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage2AWeb = new System.Windows.Forms.TabPage();
             this.tabPage1Analytics = new System.Windows.Forms.TabPage();
             this.tabPage3SearchConsole = new System.Windows.Forms.TabPage();
+            this.tabPage2AWeb = new System.Windows.Forms.TabPage();
             this.tabPage4SCWeb = new System.Windows.Forms.TabPage();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
-            this.button14 = new System.Windows.Forms.Button();
             this.tabPage5InfoWeb = new System.Windows.Forms.TabPage();
             this.webBrowser3 = new System.Windows.Forms.WebBrowser();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage2AWeb.SuspendLayout();
             this.tabPage1Analytics.SuspendLayout();
+            this.tabPage3SearchConsole.SuspendLayout();
+            this.tabPage2AWeb.SuspendLayout();
             this.tabPage4SCWeb.SuspendLayout();
             this.tabPage5InfoWeb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.tabControl2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             this.SuspendLayout();
             // 
             // CalFrom
@@ -188,7 +207,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.Location = new System.Drawing.Point(6, 35);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(827, 677);
+            this.dataGridView1.Size = new System.Drawing.Size(827, 674);
             this.dataGridView1.TabIndex = 10;
             // 
             // label2
@@ -223,64 +242,64 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(373, 12);
+            this.label4.Location = new System.Drawing.Point(473, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.Size = new System.Drawing.Size(78, 16);
             this.label4.TabIndex = 14;
             this.label4.Text = "Total Goals";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(440, 9);
+            this.textBox1.Location = new System.Drawing.Point(557, 7);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(55, 20);
+            this.textBox1.Size = new System.Drawing.Size(55, 22);
             this.textBox1.TabIndex = 15;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(87, 9);
+            this.textBox2.Location = new System.Drawing.Point(164, 7);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(55, 20);
+            this.textBox2.Size = new System.Drawing.Size(55, 22);
             this.textBox2.TabIndex = 17;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 12);
+            this.label5.Location = new System.Drawing.Point(60, 12);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 13);
+            this.label5.Size = new System.Drawing.Size(98, 16);
             this.label5.TabIndex = 16;
             this.label5.Text = "Total Sessions";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(225, 9);
+            this.textBox3.Location = new System.Drawing.Point(323, 7);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(144, 20);
+            this.textBox3.Size = new System.Drawing.Size(144, 22);
             this.textBox3.TabIndex = 21;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(147, 12);
+            this.label6.Location = new System.Drawing.Point(225, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 13);
+            this.label6.Size = new System.Drawing.Size(92, 16);
             this.label6.TabIndex = 20;
             this.label6.Text = "Last Sessions";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(558, 9);
+            this.textBox4.Location = new System.Drawing.Point(689, 9);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(144, 20);
+            this.textBox4.Size = new System.Drawing.Size(144, 22);
             this.textBox4.TabIndex = 19;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(500, 12);
+            this.label7.Location = new System.Drawing.Point(618, 12);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 13);
+            this.label7.Size = new System.Drawing.Size(65, 16);
             this.label7.TabIndex = 18;
             this.label7.Text = "Last Goal";
             // 
@@ -383,6 +402,7 @@
             this.PropURLTxt.Name = "PropURLTxt";
             this.PropURLTxt.Size = new System.Drawing.Size(335, 20);
             this.PropURLTxt.TabIndex = 44;
+            this.PropURLTxt.Text = "https://spacetravelersguild.yolasite.com/";
             // 
             // groupBox1
             // 
@@ -408,6 +428,16 @@
             this.groupBox1.TabIndex = 46;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create New Analytics and Search Console Property";
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(305, 166);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(75, 23);
+            this.button14.TabIndex = 58;
+            this.button14.Text = "Visit Web";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // label14
             // 
@@ -640,22 +670,12 @@
             this.tabControl1.Controls.Add(this.tabPage2AWeb);
             this.tabControl1.Controls.Add(this.tabPage4SCWeb);
             this.tabControl1.Controls.Add(this.tabPage5InfoWeb);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(405, 13);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(847, 737);
             this.tabControl1.TabIndex = 50;
-            // 
-            // tabPage2AWeb
-            // 
-            this.tabPage2AWeb.Controls.Add(this.webBrowser1);
-            this.tabPage2AWeb.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2AWeb.Name = "tabPage2AWeb";
-            this.tabPage2AWeb.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2AWeb.Size = new System.Drawing.Size(839, 711);
-            this.tabPage2AWeb.TabIndex = 1;
-            this.tabPage2AWeb.Text = "Analytics Web";
-            this.tabPage2AWeb.UseVisualStyleBackColor = true;
             // 
             // tabPage1Analytics
             // 
@@ -668,22 +688,34 @@
             this.tabPage1Analytics.Controls.Add(this.label6);
             this.tabPage1Analytics.Controls.Add(this.label7);
             this.tabPage1Analytics.Controls.Add(this.textBox4);
-            this.tabPage1Analytics.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1Analytics.Location = new System.Drawing.Point(4, 25);
             this.tabPage1Analytics.Name = "tabPage1Analytics";
             this.tabPage1Analytics.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1Analytics.Size = new System.Drawing.Size(839, 711);
+            this.tabPage1Analytics.Size = new System.Drawing.Size(839, 708);
             this.tabPage1Analytics.TabIndex = 0;
             this.tabPage1Analytics.Text = "Analytics Data";
             this.tabPage1Analytics.UseVisualStyleBackColor = true;
             // 
             // tabPage3SearchConsole
             // 
-            this.tabPage3SearchConsole.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3SearchConsole.Controls.Add(this.tabControl2);
+            this.tabPage3SearchConsole.Location = new System.Drawing.Point(4, 25);
             this.tabPage3SearchConsole.Name = "tabPage3SearchConsole";
-            this.tabPage3SearchConsole.Size = new System.Drawing.Size(839, 711);
+            this.tabPage3SearchConsole.Size = new System.Drawing.Size(839, 708);
             this.tabPage3SearchConsole.TabIndex = 2;
             this.tabPage3SearchConsole.Text = "Search Console Data";
             this.tabPage3SearchConsole.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2AWeb
+            // 
+            this.tabPage2AWeb.Controls.Add(this.webBrowser1);
+            this.tabPage2AWeb.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2AWeb.Name = "tabPage2AWeb";
+            this.tabPage2AWeb.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2AWeb.Size = new System.Drawing.Size(839, 711);
+            this.tabPage2AWeb.TabIndex = 1;
+            this.tabPage2AWeb.Text = "Analytics Web";
+            this.tabPage2AWeb.UseVisualStyleBackColor = true;
             // 
             // tabPage4SCWeb
             // 
@@ -706,16 +738,6 @@
             this.webBrowser2.TabIndex = 0;
             this.webBrowser2.NewWindow += new System.ComponentModel.CancelEventHandler(this.webBrowser2_NewWindow);
             // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(305, 166);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(75, 23);
-            this.button14.TabIndex = 58;
-            this.button14.Text = "Visit Web";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
             // tabPage5InfoWeb
             // 
             this.tabPage5InfoWeb.Controls.Add(this.webBrowser3);
@@ -735,6 +757,99 @@
             this.webBrowser3.Name = "webBrowser3";
             this.webBrowser3.Size = new System.Drawing.Size(833, 705);
             this.webBrowser3.TabIndex = 0;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(825, 673);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage1);
+            this.tabControl2.Controls.Add(this.tabPage2);
+            this.tabControl2.Controls.Add(this.tabPage3);
+            this.tabControl2.Controls.Add(this.tabPage4);
+            this.tabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl2.Location = new System.Drawing.Point(0, 0);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(839, 708);
+            this.tabControl2.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dataGridView2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(831, 679);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Queries";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridView3);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(831, 685);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Pages";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView3.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(825, 679);
+            this.dataGridView3.TabIndex = 1;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dataGridView4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(831, 679);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Devices";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView4.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.Size = new System.Drawing.Size(825, 673);
+            this.dataGridView4.TabIndex = 1;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.dataGridView5);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(831, 679);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Dates";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView5.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.Size = new System.Drawing.Size(831, 679);
+            this.dataGridView5.TabIndex = 2;
             // 
             // View
             // 
@@ -757,11 +872,21 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage2AWeb.ResumeLayout(false);
             this.tabPage1Analytics.ResumeLayout(false);
             this.tabPage1Analytics.PerformLayout();
+            this.tabPage3SearchConsole.ResumeLayout(false);
+            this.tabPage2AWeb.ResumeLayout(false);
             this.tabPage4SCWeb.ResumeLayout(false);
             this.tabPage5InfoWeb.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -831,5 +956,14 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.TabPage tabPage5InfoWeb;
         private System.Windows.Forms.WebBrowser webBrowser3;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridView dataGridView5;
     }
 }

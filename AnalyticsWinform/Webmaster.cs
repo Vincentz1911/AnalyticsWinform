@@ -12,21 +12,20 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Data;
 
 namespace AnalyticsWinform
 {
     public class Webmaster
     {
         static string WebSecret = "", WebEmail = "", WebAppName = "";
-
         public BindingList<Oath2Files_cls> OathFileList = new BindingList<Oath2Files_cls>();
-
         public void Add2List()
         {
             for (int i = 0; i < Controller.OAuth2Files.Length; i++)
             {
                 var filename = Path.GetFileName(Controller.OAuth2Files[i]).Split('_')[0];
-                OathFileList.Add(new Oath2Files_cls { File = Controller.OAuth2Files[i], Account = filename + "@gmail.com", AppName = filename });
+                OathFileList.Add(new Oath2Files_cls { File = Controller.OAuth2Files[i], Account = filename + "@gmail.com", AppName = "Webmaster_" + filename });
             }
         }
 
@@ -44,40 +43,50 @@ namespace AnalyticsWinform
             }
         }
 
-        public void WebmasterQuery(string siteUrl, string fromDate, string toDate, int gmail)
+        public DataTable WebmasterQuery(string siteUrl, string fromDate, string toDate, int gmail, string Dimension)
         {
-
             var credential = GetWebCredential(gmail).Result;
             var service = new WebmastersService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = WebAppName });
 
-            List<string> Dim = new List<string>() {"query", "date", "device"};
-            //Dim.Add("query");
-
-            var body = new SearchAnalyticsQueryRequest
-            {
-                StartDate = fromDate,
-                EndDate = toDate,
-                Dimensions = Dim          
-            };
+            List<string> DimList = new List<string>() { Dimension };
+            var body = new SearchAnalyticsQueryRequest {StartDate = fromDate,EndDate = toDate, Dimensions = DimList };
 
             try
             {
                 // Initial validation.
-                if (service == null)
-                    throw new ArgumentNullException("service");
-                if (body == null)
-                    throw new ArgumentNullException("body");
-                if (siteUrl == null)
-                    throw new ArgumentNullException(siteUrl);
+                if (service == null) throw new ArgumentNullException("service");
+                if (body == null) throw new ArgumentNullException("body");
+                if (siteUrl == null) throw new ArgumentNullException(siteUrl);
 
-                // Make the request.
                 var response = service.Searchanalytics.Query(body, siteUrl).Execute();
-                //return service.Searchanalytics.Query(body, siteUrl).Execute();
+
+                if (response != null)
+                {
+                    DataTable DT = new DataTable();
+
+                    DT.Columns.Add("Query");
+                    DT.Columns.Add("Clicks");
+                    DT.Columns.Add("Impressions");
+                    DT.Columns.Add("CTR");
+                    DT.Columns.Add("Position");
+                    //DT.Columns.Add("Date");
+                    //DT.Columns.Add("Device");
+                    //DT.Columns.Add("Clicks");
+                    for (int i = 0; i < response.Rows.Count; i++)
+                    {
+                        DT.Rows.Add(response.Rows[i].Keys[0], response.Rows[i].Clicks, response.Rows[i].Impressions, response.Rows[i].Ctr, response.Rows[i].Position);
+                    }
+                    return DT;
+                }
+                else return null;
+
+
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Request Searchanalytics.Query failed.", ex);
-            }
+            catch (Exception ex) { MessageBox.Show("No data found! " + ex); return null; }
+            //{
+            //    throw new Exception("Request Searchanalytics.Query failed.", ex);
+            //    //return null;
+            //}
         }
 
         public void AddWebmasterSite(string siteUrl, int gmail)
