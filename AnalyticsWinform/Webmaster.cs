@@ -11,6 +11,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace AnalyticsWinform
 {
@@ -49,12 +50,14 @@ namespace AnalyticsWinform
             var credential = GetWebCredential(gmail).Result;
             var service = new WebmastersService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = WebAppName });
 
+            List<string> Dim = new List<string>() {"query", "date", "device"};
+            //Dim.Add("query");
+
             var body = new SearchAnalyticsQueryRequest
             {
                 StartDate = fromDate,
                 EndDate = toDate,
-               // Dimensions = 
-            
+                Dimensions = Dim          
             };
 
             try
