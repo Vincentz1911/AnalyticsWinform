@@ -38,7 +38,7 @@ namespace AnalyticsWinform
             for (int i = 0; i < Controller.OAuth2Files.Length; i++)
             {
                 var filename = Path.GetFileName(Controller.OAuth2Files[i]).Split('_')[0];
-                OathFileList.Add(new Oath2Files_cls { File = Controller.OAuth2Files[i], Account = filename + "@gmail.com", AppName = "Analytics_"+filename });
+                OathFileList.Add(new Oath2Files_cls { File = Controller.OAuth2Files[i], Account = filename + "@gmail.com", AppName = "Analytics_" + filename });
             }
         }
 
@@ -48,7 +48,7 @@ namespace AnalyticsWinform
             email = OathFileList[gmail].Account;
             appName = OathFileList[gmail].AppName;
 
-            MessageBox.Show(secret + " "+ email +" "+ appName);
+            MessageBox.Show(secret + " " + email + " " + appName);
 
             using (var stream = new FileStream(secret, FileMode.Open, FileAccess.Read))
             {

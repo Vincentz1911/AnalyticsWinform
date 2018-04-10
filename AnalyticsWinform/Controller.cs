@@ -2,14 +2,12 @@
 using System.IO;
 using System.Data;
 using System.Windows.Forms;
-using System.Net.Http;
 using Microsoft.Win32;
 
 namespace AnalyticsWinform
 {
     public class Controller
     {
-        private static readonly HttpClient client = new HttpClient();
 
         public static string[] OAuth2Files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "JSON", "*.json");
         public Oath2Files_cls Oath_cls { get; set; }
