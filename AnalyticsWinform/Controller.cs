@@ -8,7 +8,6 @@ namespace AnalyticsWinform
 {
     public class Controller
     {
-
         public static string[] OAuth2Files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory + "JSON", "*.json");
         public Oath2Files_cls Oath_cls { get; set; }
 
@@ -57,9 +56,10 @@ namespace AnalyticsWinform
 
         public static void EnsureBrowserEmulationEnabled(string exename = "AnalyticsWinform.exe", bool uninstall = false)
         {
+            string reg = @"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION";
             try
             {
-                using (var rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", true))
+                using (var rk = Registry.CurrentUser.OpenSubKey(reg, true))
                 {
                     if (!uninstall) { dynamic value = rk.GetValue(exename); if (value == null) rk.SetValue(exename, (uint)11001, RegistryValueKind.DWord); } else rk.DeleteValue(exename);
                 }
@@ -67,6 +67,8 @@ namespace AnalyticsWinform
             catch
             {
             }
+
+            MessageBox.Show($"Adding {exename} to registry {reg} to enable in-app browser Internet Explorer 11 instead of default Internet Explorer 7");
         }
 
     }

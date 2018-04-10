@@ -30,6 +30,48 @@ namespace AnalyticsWinform
             CalTo.MinDate = new DateTime(2005, 1, 1, 0, 0, 0);
         }
 
+        private void Day_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = CalTo.SelectionStart.AddDays(-1); }
+        private void Week_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = CalTo.SelectionStart.AddDays(-7); }
+        private void Month_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = CalTo.SelectionStart.AddMonths(-1); }
+        private void Quarter_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = CalTo.SelectionStart.AddMonths(-3); }
+        private void Year_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = CalTo.SelectionStart.AddYears(-1); }
+        private void AllTime_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = new DateTime(2005, 1, 1, 0, 0, 0); CalTo.SelectionStart = CalTo.MaxDate; }
+        private void FromDate_DateChanged(object sender, DateRangeEventArgs e) { label2.Text = CalFrom.SelectionStart.ToString("dd/MM/yyyy") + " - " + CalTo.SelectionStart.ToString("dd/MM/yyyy"); }
+        private void ToDate_DateChanged(object sender, DateRangeEventArgs e) { label2.Text = CalFrom.SelectionStart.ToString("dd/MM/yyyy") + " - " + CalTo.SelectionStart.ToString("dd/MM/yyyy"); }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) { if (listBox1.SelectedValue != null) AccountIDLabel.Text = listBox1.SelectedValue.ToString(); }
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e) { if (listBox2.SelectedValue != null) PropertyIDLabel.Text = listBox2.SelectedValue.ToString(); }
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e) { if (listBox3.SelectedValue != null) ViewIDLabel.Text = listBox3.SelectedValue.ToString(); }
+
+        private void webBrowser1_NewWindow(object sender, System.ComponentModel.CancelEventArgs e) { e.Cancel = true; webBrowser3.Navigate(webBrowser1.StatusText); }
+        private void webBrowser2_NewWindow(object sender, System.ComponentModel.CancelEventArgs e) { e.Cancel = true; webBrowser3.Navigate(webBrowser2.StatusText); }
+
+        private void SelectJSON_Click(object sender, EventArgs e) { CTR.GetOAuthFile(); }
+        private void NewProperty_Click(object sender, EventArgs e) { textBox6.Text = ANA.CreateNewProperty(PropNameTxt.Text, PropURLTxt.Text, listBox1.SelectedValue.ToString(), comboBox3.SelectedIndex); }
+        private void FixRegistryIE_Click(object sender, EventArgs e) { Controller.EnsureBrowserEmulationEnabled(); }
+        private void LoadAnalyticsWeb_Click(object sender, EventArgs e) { webBrowser1.Navigate(ANA.GoToAnalyticsSite(listBox2.SelectedValue.ToString())); tabControl1.SelectedTab = tabPage2AWeb; }
+        private void LoadWebmasterSite_Click(object sender, EventArgs e) { webBrowser2.Navigate(WEB.VisitSearchConsoleWeb(PropURLTxt.Text)); tabControl1.SelectedTab = tabPage4SCWeb; }
+        private void NewWebmasterSite_Click(object sender, EventArgs e) { WEB.AddWebmasterSite(PropURLTxt.Text, comboBox2.SelectedIndex); textBox5.Text = WEB.GetToken(PropURLTxt.Text, comboBox2.SelectedIndex); }
+        private void VerifyWebMasterSite_Click(object sender, EventArgs e)
+        {
+            string verification; if (radioButton1.Checked == true) verification = "analytics"; else verification = "meta";
+            WEB.RunVerification(PropURLTxt.Text, comboBox2.SelectedIndex, verification);
+            WEB.SubmitSitemap(PropURLTxt.Text, comboBox2.SelectedIndex);
+        }
+        private void GetWebmasterData_Click(object sender, EventArgs e)
+        {
+            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "query");
+            dataGridView2.DataSource = GDT;
+
+            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "page");
+            dataGridView3.DataSource = GDT;
+
+            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "device");
+            dataGridView4.DataSource = GDT;
+
+            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "date");
+            dataGridView5.DataSource = GDT;
+        }
         private void GetAnalyticsData_Click(object sender, EventArgs e)
         {
             if (CalFrom.SelectionRange.Start > CalTo.SelectionRange.Start)
@@ -76,53 +118,7 @@ namespace AnalyticsWinform
                 comboBox1.DisplayMember = "Name";
             }
         }
-        private void SelectJSON_Click(object sender, EventArgs e) { CTR.GetOAuthFile(); }
-        private void NewProperty_Click(object sender, EventArgs e) { textBox6.Text = ANA.CreateNewProperty(PropNameTxt.Text, PropURLTxt.Text, listBox1.SelectedValue.ToString(), comboBox3.SelectedIndex); }
-        private void FixRegistryIE_Click(object sender, EventArgs e) { Controller.EnsureBrowserEmulationEnabled(); }
-        private void LoadAnalyticsWeb_Click(object sender, EventArgs e) { webBrowser1.Navigate(ANA.GoToAnalyticsSite(listBox2.SelectedValue.ToString())); tabControl1.SelectedTab = tabPage2AWeb; }
-        private void NewWebmasterSite_Click(object sender, EventArgs e) { WEB.AddWebmasterSite(PropURLTxt.Text, comboBox2.SelectedIndex); textBox5.Text = WEB.GetToken(PropURLTxt.Text, comboBox2.SelectedIndex); }
-        private void VerifyWebMasterSite_Click(object sender, EventArgs e) { WEB.RunVerification(PropURLTxt.Text, comboBox2.SelectedIndex); WEB.SubmitSitemap(PropURLTxt.Text, comboBox2.SelectedIndex); }
 
-        private void Day_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = CalTo.SelectionStart.AddDays(-1); }
-        private void Week_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = CalTo.SelectionStart.AddDays(-7); }
-        private void Month_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = CalTo.SelectionStart.AddMonths(-1); }
-        private void Quarter_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = CalTo.SelectionStart.AddMonths(-3); }
-        private void Year_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = CalTo.SelectionStart.AddYears(-1); }
-        private void AllTime_button_Click(object sender, EventArgs e) { CalFrom.SelectionStart = new DateTime(2005, 1, 1, 0, 0, 0); CalTo.SelectionStart = CalTo.MaxDate; }
-        private void FromDate_DateChanged(object sender, DateRangeEventArgs e) { label2.Text = CalFrom.SelectionStart.ToString("dd/MM/yyyy") + " - " + CalTo.SelectionStart.ToString("dd/MM/yyyy"); }
-        private void ToDate_DateChanged(object sender, DateRangeEventArgs e) { label2.Text = CalFrom.SelectionStart.ToString("dd/MM/yyyy") + " - " + CalTo.SelectionStart.ToString("dd/MM/yyyy"); }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) { if (listBox1.SelectedValue != null) AccountIDLabel.Text = listBox1.SelectedValue.ToString(); }
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e) { if (listBox2.SelectedValue != null) PropertyIDLabel.Text = listBox2.SelectedValue.ToString(); }
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e) { if (listBox3.SelectedValue != null) ViewIDLabel.Text = listBox3.SelectedValue.ToString(); }
-
-        private void webBrowser1_NewWindow(object sender, System.ComponentModel.CancelEventArgs e) {e.Cancel = true; webBrowser3.Navigate(webBrowser1.StatusText); }
-        private void webBrowser2_NewWindow(object sender, System.ComponentModel.CancelEventArgs e) { e.Cancel = true; webBrowser3.Navigate(webBrowser2.StatusText); }
-
-        private void button14_Click(object sender, EventArgs e)
-        {
-            webBrowser2.Navigate(WEB.VisitSearchConsoleWeb(PropURLTxt.Text)); tabControl1.SelectedTab = tabPage4SCWeb;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "query");
-            dataGridView2.DataSource = GDT;
-
-            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "page");
-            dataGridView3.DataSource = GDT;
-
-            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "device");
-            dataGridView4.DataSource = GDT;
-
-            GDT = WEB.WebmasterQuery(PropURLTxt.Text, CalFrom.SelectionStart.ToString("yyyy-MM-dd"), CalTo.SelectionStart.ToString("yyyy-MM-dd"), comboBox2.SelectedIndex, "date");
-            dataGridView5.DataSource = GDT;
-        }
-
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-
-        }
 
     }
 }

@@ -128,7 +128,7 @@ namespace AnalyticsWinform
             return response.Token;
         }
 
-        public void RunVerification(string site, int gmail)
+        public void RunVerification(string site, int gmail, string verification)
         {
             var credential = GetWebCredential(gmail).Result;
             var service = new SiteVerificationService(new BaseClientService.Initializer { HttpClientInitializer = credential, ApplicationName = WebAppName });
@@ -146,10 +146,10 @@ namespace AnalyticsWinform
                 MessageBox.Show("Verification:" + verificationResponse.Id);
 
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Verification failed", ex);
-            }
+            catch (Exception ex) { MessageBox.Show("Verification failed! \n\n " + ex); }
+            //{
+            //    throw new Exception("Verification failed", ex);
+            //}
         }
 
         public void SubmitSitemap(string siteUrl, int gmail)
@@ -170,10 +170,10 @@ namespace AnalyticsWinform
                     // Make the request.
                     service.Sitemaps.Submit(siteUrl, siteUrl + feedpath).Execute();
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception("Request Sitemaps.Submit failed.", ex);
-                }
+                catch (Exception ex) { MessageBox.Show("Sitemap not added! \n\n " + ex); }
+            //{
+            //        throw new Exception("Request Sitemaps.Submit failed.", ex);
+            //    }
         }
 
         public string VisitSearchConsoleWeb(string site)

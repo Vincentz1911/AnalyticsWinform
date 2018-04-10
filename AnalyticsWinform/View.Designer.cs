@@ -86,20 +86,24 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1Analytics = new System.Windows.Forms.TabPage();
             this.tabPage3SearchConsole = new System.Windows.Forms.TabPage();
-            this.tabPage2AWeb = new System.Windows.Forms.TabPage();
-            this.tabPage4SCWeb = new System.Windows.Forms.TabPage();
-            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
-            this.tabPage5InfoWeb = new System.Windows.Forms.TabPage();
-            this.webBrowser3 = new System.Windows.Forms.WebBrowser();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.tabPage2AWeb = new System.Windows.Forms.TabPage();
+            this.tabPage4SCWeb = new System.Windows.Forms.TabPage();
+            this.webBrowser2 = new System.Windows.Forms.WebBrowser();
+            this.tabPage5InfoWeb = new System.Windows.Forms.TabPage();
+            this.webBrowser3 = new System.Windows.Forms.WebBrowser();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -107,18 +111,19 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1Analytics.SuspendLayout();
             this.tabPage3SearchConsole.SuspendLayout();
-            this.tabPage2AWeb.SuspendLayout();
-            this.tabPage4SCWeb.SuspendLayout();
-            this.tabPage5InfoWeb.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            this.tabPage2AWeb.SuspendLayout();
+            this.tabPage4SCWeb.SuspendLayout();
+            this.tabPage5InfoWeb.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // CalFrom
@@ -406,6 +411,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.button14);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.textBox5);
@@ -437,7 +443,7 @@
             this.button14.TabIndex = 58;
             this.button14.Text = "Visit Web";
             this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.button14.Click += new System.EventHandler(this.LoadWebmasterSite_Click);
             // 
             // label14
             // 
@@ -450,9 +456,9 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(62, 169);
+            this.textBox5.Location = new System.Drawing.Point(87, 169);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(237, 20);
+            this.textBox5.Size = new System.Drawing.Size(212, 20);
             this.textBox5.TabIndex = 56;
             // 
             // comboBox2
@@ -493,9 +499,9 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(62, 140);
+            this.textBox6.Location = new System.Drawing.Point(87, 140);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(237, 20);
+            this.textBox6.Size = new System.Drawing.Size(212, 20);
             this.textBox6.TabIndex = 50;
             // 
             // button11
@@ -554,10 +560,11 @@
             this.button2.TabIndex = 14;
             this.button2.Text = "Get Webmaster Data";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.GetWebmasterData_Click);
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.textBox7);
             this.groupBox3.Controls.Add(this.button13);
             this.groupBox3.Controls.Add(this.button12);
             this.groupBox3.Controls.Add(this.ViewIDLabel);
@@ -654,10 +661,9 @@
             this.webBrowser1.Location = new System.Drawing.Point(3, 3);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(833, 705);
+            this.webBrowser1.Size = new System.Drawing.Size(833, 702);
             this.webBrowser1.TabIndex = 49;
             this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
-            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             this.webBrowser1.NewWindow += new System.ComponentModel.CancelEventHandler(this.webBrowser1_NewWindow);
             // 
             // tabControl1
@@ -706,67 +712,6 @@
             this.tabPage3SearchConsole.Text = "Search Console Data";
             this.tabPage3SearchConsole.UseVisualStyleBackColor = true;
             // 
-            // tabPage2AWeb
-            // 
-            this.tabPage2AWeb.Controls.Add(this.webBrowser1);
-            this.tabPage2AWeb.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2AWeb.Name = "tabPage2AWeb";
-            this.tabPage2AWeb.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2AWeb.Size = new System.Drawing.Size(839, 711);
-            this.tabPage2AWeb.TabIndex = 1;
-            this.tabPage2AWeb.Text = "Analytics Web";
-            this.tabPage2AWeb.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4SCWeb
-            // 
-            this.tabPage4SCWeb.Controls.Add(this.webBrowser2);
-            this.tabPage4SCWeb.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4SCWeb.Name = "tabPage4SCWeb";
-            this.tabPage4SCWeb.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4SCWeb.Size = new System.Drawing.Size(839, 711);
-            this.tabPage4SCWeb.TabIndex = 3;
-            this.tabPage4SCWeb.Text = "Search Console Web";
-            this.tabPage4SCWeb.UseVisualStyleBackColor = true;
-            // 
-            // webBrowser2
-            // 
-            this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser2.Location = new System.Drawing.Point(3, 3);
-            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser2.Name = "webBrowser2";
-            this.webBrowser2.Size = new System.Drawing.Size(833, 705);
-            this.webBrowser2.TabIndex = 0;
-            this.webBrowser2.NewWindow += new System.ComponentModel.CancelEventHandler(this.webBrowser2_NewWindow);
-            // 
-            // tabPage5InfoWeb
-            // 
-            this.tabPage5InfoWeb.Controls.Add(this.webBrowser3);
-            this.tabPage5InfoWeb.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5InfoWeb.Name = "tabPage5InfoWeb";
-            this.tabPage5InfoWeb.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5InfoWeb.Size = new System.Drawing.Size(839, 711);
-            this.tabPage5InfoWeb.TabIndex = 4;
-            this.tabPage5InfoWeb.Text = "Info Web";
-            this.tabPage5InfoWeb.UseVisualStyleBackColor = true;
-            // 
-            // webBrowser3
-            // 
-            this.webBrowser3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser3.Location = new System.Drawing.Point(3, 3);
-            this.webBrowser3.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser3.Name = "webBrowser3";
-            this.webBrowser3.Size = new System.Drawing.Size(833, 705);
-            this.webBrowser3.TabIndex = 0;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(825, 673);
-            this.dataGridView2.TabIndex = 0;
-            // 
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage1);
@@ -792,13 +737,22 @@
             this.tabPage1.Text = "Queries";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(825, 673);
+            this.dataGridView2.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dataGridView3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(831, 685);
+            this.tabPage2.Size = new System.Drawing.Size(831, 679);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Pages";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -809,7 +763,7 @@
             this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView3.Location = new System.Drawing.Point(3, 3);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(825, 679);
+            this.dataGridView3.Size = new System.Drawing.Size(825, 673);
             this.dataGridView3.TabIndex = 1;
             // 
             // tabPage3
@@ -851,6 +805,98 @@
             this.dataGridView5.Size = new System.Drawing.Size(831, 679);
             this.dataGridView5.TabIndex = 2;
             // 
+            // tabPage2AWeb
+            // 
+            this.tabPage2AWeb.Controls.Add(this.webBrowser1);
+            this.tabPage2AWeb.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2AWeb.Name = "tabPage2AWeb";
+            this.tabPage2AWeb.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2AWeb.Size = new System.Drawing.Size(839, 708);
+            this.tabPage2AWeb.TabIndex = 1;
+            this.tabPage2AWeb.Text = "Analytics Web";
+            this.tabPage2AWeb.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4SCWeb
+            // 
+            this.tabPage4SCWeb.Controls.Add(this.webBrowser2);
+            this.tabPage4SCWeb.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4SCWeb.Name = "tabPage4SCWeb";
+            this.tabPage4SCWeb.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4SCWeb.Size = new System.Drawing.Size(839, 708);
+            this.tabPage4SCWeb.TabIndex = 3;
+            this.tabPage4SCWeb.Text = "Search Console Web";
+            this.tabPage4SCWeb.UseVisualStyleBackColor = true;
+            // 
+            // webBrowser2
+            // 
+            this.webBrowser2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser2.Location = new System.Drawing.Point(3, 3);
+            this.webBrowser2.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser2.Name = "webBrowser2";
+            this.webBrowser2.Size = new System.Drawing.Size(833, 702);
+            this.webBrowser2.TabIndex = 0;
+            this.webBrowser2.NewWindow += new System.ComponentModel.CancelEventHandler(this.webBrowser2_NewWindow);
+            // 
+            // tabPage5InfoWeb
+            // 
+            this.tabPage5InfoWeb.Controls.Add(this.webBrowser3);
+            this.tabPage5InfoWeb.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5InfoWeb.Name = "tabPage5InfoWeb";
+            this.tabPage5InfoWeb.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5InfoWeb.Size = new System.Drawing.Size(839, 708);
+            this.tabPage5InfoWeb.TabIndex = 4;
+            this.tabPage5InfoWeb.Text = "Info Web";
+            this.tabPage5InfoWeb.UseVisualStyleBackColor = true;
+            // 
+            // webBrowser3
+            // 
+            this.webBrowser3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser3.Location = new System.Drawing.Point(3, 3);
+            this.webBrowser3.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser3.Name = "webBrowser3";
+            this.webBrowser3.Size = new System.Drawing.Size(833, 702);
+            this.webBrowser3.TabIndex = 0;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(3, 5);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.radioButton1.Size = new System.Drawing.Size(66, 17);
+            this.radioButton1.TabIndex = 59;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "analytics";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(3, 34);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.radioButton2.Size = new System.Drawing.Size(48, 17);
+            this.radioButton2.TabIndex = 60;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "meta";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioButton2);
+            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Location = new System.Drawing.Point(61, 138);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(20, 59);
+            this.panel1.TabIndex = 22;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(261, 193);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 20);
+            this.textBox7.TabIndex = 62;
+            // 
             // View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -875,18 +921,20 @@
             this.tabPage1Analytics.ResumeLayout(false);
             this.tabPage1Analytics.PerformLayout();
             this.tabPage3SearchConsole.ResumeLayout(false);
-            this.tabPage2AWeb.ResumeLayout(false);
-            this.tabPage4SCWeb.ResumeLayout(false);
-            this.tabPage5InfoWeb.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            this.tabPage2AWeb.ResumeLayout(false);
+            this.tabPage4SCWeb.ResumeLayout(false);
+            this.tabPage5InfoWeb.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -965,5 +1013,9 @@
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }
